@@ -1,28 +1,32 @@
 // Функция, возвращающая случайное целое число из переданного диапазона включительно.
 
-function getNumberFrom (minValue, maxValue) {
-  const providedNumbers = [];
-  let increaser = 0;
-  if (minValue >= maxValue) {
-    return 'Ошибка: первое число должно быть меньше второго!';
-  } else if (minValue % 1 !==0 || maxValue % 1 !==0) {
-    return 'Ошибка: оба числа должны быть целыми!';
-  } else if (minValue <0 || maxValue < 0) {
-    return 'Ошибка: оба числа должны быть положительными!';
-  } else {
-    for (let i = 0; i <= maxValue - minValue; i++) {
-      providedNumbers[i] = minValue + increaser;
-      increaser++;
+function getRandomNumber (minValue, maxValue) {
+  if (minValue <0 || maxValue < 0) {
+    return 0;
+  } else if (minValue >= maxValue) {
+    if (minValue % 1 !==0 || maxValue % 1 !==0) {
+      if ((Math.ceil(minValue) - Math.floor(maxValue)) === 1) {
+        return 0;
+      }
+      return Math.floor(Math.random() * (Math.floor(minValue) - Math.ceil(maxValue))) + Math.ceil(maxValue);
     }
+    return Math.round(Math.random() * (minValue-maxValue) + maxValue);
   }
-  return providedNumbers[Math.floor(Math.random() * providedNumbers.length)];
+  else if (minValue % 1 !==0 || maxValue % 1 !==0) {
+    if ((Math.ceil(maxValue) - Math.floor(minValue)) === 1) {
+      return 0;
+    }
+    return Math.round(Math.random() * (Math.floor(maxValue) - Math.ceil(minValue))) + Math.ceil(minValue);
+  }
+  return Math.round(Math.random() * (maxValue - minValue) + minValue);
 }
-getNumberFrom();
+
+getRandomNumber();
 
 
 // Функция для проверки максимальной длины строки.
 
-function limitString (string, maxLength) {
+function checkStringLength (string, maxLength) {
   return (string.length <= maxLength);
 }
-limitString();
+checkStringLength();
