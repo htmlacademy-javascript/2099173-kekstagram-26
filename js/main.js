@@ -96,7 +96,7 @@ function getAvatarUrl() {
   for (let i=0; i<6; i++) {
     AVATAR_URL_VALUES[i] = `img/avatar-${i+1}.jpg`;
   }
-  const avatarUrlNumber = getRandomNumber(1, AVATAR_URL_VALUES.length-1);
+  const avatarUrlNumber = getRandomNumber(0, AVATAR_URL_VALUES.length-1);
   const avatarUrl = AVATAR_URL_VALUES[avatarUrlNumber];
   return avatarUrl;
 }
@@ -147,7 +147,7 @@ function getName() {
     'Александра',
     'Анастасия'
   ];
-  const nameNumber = getRandomNumber(1, SOME_NAMES.length-1);
+  const nameNumber = getRandomNumber(0, SOME_NAMES.length-1);
   const correctName = SOME_NAMES[nameNumber];
   return correctName;
 }
