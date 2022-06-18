@@ -1,8 +1,8 @@
 import { checkStringLength } from './util.js';
 
-function checkPhotoDescription () {
+function checkFormValidation () {
   const check = checkStringLength('check', 5);
   return check;
 }
 
-export {checkPhotoDescription};
+export {checkFormValidation};

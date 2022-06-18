@@ -1,181 +1,48 @@
-function getRandomNumber (minValue, maxValue) {
-  if (minValue <0 || maxValue < 0) {
-    return 0;
-  } else if (minValue >= maxValue) {
-    if (minValue % 1 !==0 || maxValue % 1 !==0) {
-      if ((Math.ceil(minValue) - Math.floor(maxValue)) === 1) {
-        return 0;
-      }
-      return Math.floor(Math.random() * (Math.floor(minValue) - Math.ceil(maxValue))) + Math.ceil(maxValue);
-    }
-    return Math.round(Math.random() * (minValue-maxValue) + maxValue);
-  }
-  else if (minValue % 1 !==0 || maxValue % 1 !==0) {
-    if ((Math.ceil(maxValue) - Math.floor(minValue)) === 1) {
-      return 0;
-    }
-    return Math.round(Math.random() * (Math.floor(maxValue) - Math.ceil(minValue))) + Math.ceil(minValue);
-  }
-  return Math.round(Math.random() * (maxValue - minValue) + minValue);
-}
-getRandomNumber();
+import {creeatePhotos} from './generate-photos.js';
+import {checkBrowsePhoto} from './browse-photos.js';
+import {checkEffectsPhoto} from './effects-photo.js';
+import {checkFormValidation} from './form-validation.js';
+import {checkPhotoDescription} from './photo-descriptions.js';
+import {checkRepresentationFilter} from './representation-filter.js';
+import {checkScale} from './scale.js';
+import {checkUploadForm} from './upload-form.js';
 
-function checkStringLength (string, length) {
-  return string.length <= length;
-}
-checkStringLength('word', 3);
+// eslint-disable-next-line no-console
+console.log(
+  creeatePhotos()
+);
 
-const PHOTOS_COUNT = 25;
-let idCounter = 1;
-let urlCounter = 1;
+// eslint-disable-next-line no-console
+console.log(
+  checkBrowsePhoto()
+);
 
-function getPhotoId() {
-  const photoId = idCounter;
-  idCounter++;
-  return photoId;
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkEffectsPhoto()
+);
 
-function getPhotoUrlAdress() {
-  const photoUrl = `photos/${urlCounter}.jpg`;
-  urlCounter++;
-  return photoUrl;
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkFormValidation()
+);
 
-function getDescription() {
-  const DESCRIPTION_VALUES = [
-    'На море',
-    'В парке',
-    'В лесу',
-    'В поле',
-    'На озере',
-    'На речке',
-    'На рыбалке',
-    'На пляже',
-    'В деревне',
-    'У бабушки',
-    'На кладбище',
-    'На заброшенном заводе',
-    'С сестрой',
-    'С братом',
-    'С папой',
-    'С мамой',
-    'С одноклассниками',
-    'С одногруппниками из колледжа',
-    'С университетскими',
-    'С сослуживцами',
-    'С коллегами по работе',
-    'С возлюбленной',
-    'С сыном',
-    'В горах',
-    'На работе'
-  ];
-  const photoDescriptionNumber = getRandomNumber(0, DESCRIPTION_VALUES.length-1);
-  const photoDescription = DESCRIPTION_VALUES[photoDescriptionNumber];
-  return photoDescription;
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkPhotoDescription()
+);
 
-function getLikes() {
-  const likesNumber = getRandomNumber(15, 200);
-  return likesNumber;
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkRepresentationFilter()
+);
 
-const usedIdValues = [];
-function getCommentID() {
-  let commentId = getRandomNumber(1, 1000);
-  if (usedIdValues.includes(commentId)) {
-    while(usedIdValues.includes(commentId)) {
-      commentId+=1000;
-    }
-  }
-  usedIdValues.push(commentId);
-  return commentId;
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkScale()
+);
 
-function getAvatarUrl() {
-  const AVATAR_URL_VALUES = [];
-  for (let i=0; i<6; i++) {
-    AVATAR_URL_VALUES[i] = `img/avatar-${i+1}.jpg`;
-  }
-  const avatarUrlNumber = getRandomNumber(0, AVATAR_URL_VALUES.length-1);
-  const avatarUrl = AVATAR_URL_VALUES[avatarUrlNumber];
-  return avatarUrl;
-}
-
-function getCompleteMessage() {
-  const COMMENTS_MESSAGES = [
-    'Всё отлично!',
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  ];
-  let messageNumber = getRandomNumber(1, COMMENTS_MESSAGES.length-1);
-  const firstPartOfMessage = COMMENTS_MESSAGES[messageNumber];
-  COMMENTS_MESSAGES.splice(messageNumber, 1);
-  messageNumber = getRandomNumber(1, COMMENTS_MESSAGES.length-1);
-  const secondPartOfMessage = COMMENTS_MESSAGES[messageNumber];
-  let completeMessage;
-  if (getRandomNumber(1, 2) === 2) {
-    completeMessage = `${firstPartOfMessage} ${secondPartOfMessage}`;
-  } else {
-    completeMessage = firstPartOfMessage;
-  }
-  return completeMessage;
-}
-
-function getName() {
-  const SOME_NAMES = [
-    'Александр',
-    'Максим',
-    'Михаил',
-    'Марк',
-    'Иван',
-    'Артем',
-    'Лев',
-    'Дмитрий',
-    'Матвей',
-    'Даниил',
-    'София',
-    'Анна',
-    'Мария',
-    'Алиса',
-    'Ева',
-    'Виктория',
-    'Полина',
-    'Варвара',
-    'Александра',
-    'Анастасия'
-  ];
-  const nameNumber = getRandomNumber(0, SOME_NAMES.length-1);
-  const correctName = SOME_NAMES[nameNumber];
-  return correctName;
-}
-
-function SingleComment (commentId, avatar, message, commenterName) {
-  this.commentId = commentId;
-  this.avatar = avatar;
-  this.message = message;
-  this.commenterName = commenterName;
-}
-
-function addComments () {
-  const COMMENTS = [];
-  for (let i=0; i<getRandomNumber(1,10); i++) {
-    COMMENTS[i] = new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName());
-  }
-  return COMMENTS;
-}
-
-function SinglePhoto (photoId, urlAdress, description, likes, comments) {
-  this.photoId = photoId;
-  this.urlAdress = urlAdress;
-  this.description = description;
-  this.likes = likes;
-  this.comments = comments;
-}
-
-const photoObjects = [];
-for (let j=0; j<PHOTOS_COUNT; j++) {
-  photoObjects[j] = new SinglePhoto(getPhotoId(), getPhotoUrlAdress(), getDescription(), getLikes(), addComments());
-}
+// eslint-disable-next-line no-console
+console.log(
+  checkUploadForm()
+);
