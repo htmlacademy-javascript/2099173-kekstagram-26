@@ -1,8 +1,2 @@
-import { checkStringLength } from './util.js';
-
-function checkBrowsePhoto () {
-  const check = checkStringLength('check', 5);
-  return check;
-}
-
-export {checkBrowsePhoto};
+// const bigPicture = document.querySelector('.big-picture');
+// bigPicture.classList.remove('hidden');

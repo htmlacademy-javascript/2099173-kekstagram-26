@@ -1,48 +1,26 @@
-import {creeatePhotos} from './generate-photos.js';
-import {checkBrowsePhoto} from './browse-photos.js';
-import {checkEffectsPhoto} from './effects-photo.js';
-import {checkFormValidation} from './form-validation.js';
-import {checkPhotoDescription} from './photo-descriptions.js';
-import {checkRepresentationFilter} from './representation-filter.js';
-import {checkScale} from './scale.js';
-import {checkUploadForm} from './upload-form.js';
+//Генерирует данные для отображения фотографий
+import './generate-photos.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  creeatePhotos()
-);
+//Отображает фотографию других пользователей в большом виде
+import './browse-photos.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkBrowsePhoto()
-);
+//Добавляет эффекты для фотографий
+import './effects-photo.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkEffectsPhoto()
-);
+//Проверка правильности заполнения формы
+import './form-validation.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkFormValidation()
-);
+//Добавление описаний к фотографии, лайков и т.д.
+import './photo-descriptions.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkPhotoDescription()
-);
+//фильтра для отображения фотографий
+import './representation-filter.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkRepresentationFilter()
-);
+//Добавляет управление масштабом
+import './scale.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkScale()
-);
+//Предоставляет форму для загрузки фотографий
+import './upload-form.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  checkUploadForm()
-);
+//Выводит в види миниатюр фотографии других пользователей
+import './thumbnails.js';
