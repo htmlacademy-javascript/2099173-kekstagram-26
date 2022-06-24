@@ -22,3 +22,5 @@ for (let i=0; i<25; i++) {
 }
 
 picturesContainer.append(fragment);
+
+export {photoObjects};
