@@ -62,6 +62,8 @@ const SOME_NAMES = [
   'Анастасия'
 ];
 
+const usedIdValues = [];
+
 let counter = 0;
 
 function getPhotoId() {
@@ -84,7 +86,6 @@ function getLikes() {
   return likesNumber;
 }
 
-const usedIdValues = [];
 function getCommentID() {
   let commentId = getRandomNumber(1, 1000);
   if (usedIdValues.includes(commentId)) {
@@ -138,7 +139,7 @@ function SingleComment (commentId, avatar, message, commenterName) {
 function addComments () {
   const COMMENTS = [];
   for (let i=0; i<getRandomNumber(1,10); i++) {
-    COMMENTS[i] = new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName());
+    COMMENTS.push(new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName()));
   }
   return COMMENTS;
 }
@@ -156,7 +157,7 @@ function creeatePhotos () {
   counter = 0;
   for (let j=0; j<PHOTOS_COUNT; j++) {
     counter = j;
-    photoObjects[j] = new SinglePhoto(getPhotoId(), getPhotoUrlAdress(), getDescription(), getLikes(), addComments());
+    photoObjects.push(new SinglePhoto(getPhotoId(), getPhotoUrlAdress(), getDescription(), getLikes(), addComments()));
   }
   return photoObjects;
 }

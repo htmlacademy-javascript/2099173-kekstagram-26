@@ -25,6 +25,11 @@ function checkStringLength (string, length) {
   return string.length <= length;
 }
 
+function isKeydownEscape(evt) {
+  return evt.key === 'Escape';
+}
+
 
 export {getRandomNumber};
 export {checkStringLength};
+export {isKeydownEscape};
