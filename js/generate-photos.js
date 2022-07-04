@@ -1,35 +1,33 @@
 import {getRandomNumber} from './util.js';
 
 const PHOTOS_COUNT = 25;
-let idCounter = 1;
-let urlCounter = 1;
 
 const DESCRIPTION_VALUES = [
   'На море',
-  'В парке',
-  'В лесу',
-  'В поле',
-  'На озере',
-  'На речке',
-  'На рыбалке',
-  'На пляже',
-  'В деревне',
-  'У бабушки',
-  'На кладбище',
-  'На заброшенном заводе',
-  'С сестрой',
-  'С братом',
-  'С папой',
-  'С мамой',
-  'С одноклассниками',
-  'С одногруппниками из колледжа',
-  'С университетскими',
-  'С сослуживцами',
-  'С коллегами по работе',
-  'С возлюбленной',
-  'С сыном',
-  'В горах',
-  'На работе'
+  'По дороге на пляж',
+  'Лазурь',
+  'Секси фотографша',
+  'Веселые Том Ямы',
+  'Черный спорткар',
+  'Клубничка',
+  'Ягодный морс',
+  'Самолет над пляжем',
+  'Новая полка для обуви',
+  'Достучаться до небес',
+  'Ауди',
+  'Настоящий поке',
+  'Сушикот',
+  'Новые тапки для дома',
+  'В небесах',
+  'Хор',
+  'Ретро-автомобиль',
+  'Тапочки с подсветкой',
+  'Вечерний отель',
+  'Вок',
+  'Закат',
+  'Крабик',
+  'На концерте эминема',
+  'Бегемоты и дефендер'
 ];
 
 const COMMENTS_MESSAGES = [
@@ -64,21 +62,22 @@ const SOME_NAMES = [
   'Анастасия'
 ];
 
+const usedIdValues = [];
+
+let counter = 0;
+
 function getPhotoId() {
-  const photoId = idCounter;
-  idCounter++;
+  const photoId = counter+1;
   return photoId;
 }
 
 function getPhotoUrlAdress() {
-  const photoUrl = `photos/${urlCounter}.jpg`;
-  urlCounter++;
+  const photoUrl = `photos/${counter+1}.jpg`;
   return photoUrl;
 }
 
 function getDescription() {
-  const photoDescriptionNumber = getRandomNumber(0, DESCRIPTION_VALUES.length-1);
-  const photoDescription = DESCRIPTION_VALUES[photoDescriptionNumber];
+  const photoDescription = DESCRIPTION_VALUES[counter];
   return photoDescription;
 }
 
@@ -87,7 +86,6 @@ function getLikes() {
   return likesNumber;
 }
 
-const usedIdValues = [];
 function getCommentID() {
   let commentId = getRandomNumber(1, 1000);
   if (usedIdValues.includes(commentId)) {
@@ -102,7 +100,7 @@ function getCommentID() {
 function getAvatarUrl() {
   const AVATAR_URL_VALUES = [];
   for (let i=0; i<6; i++) {
-    AVATAR_URL_VALUES[i] = `img/avatar-${i+1}.jpg`;
+    AVATAR_URL_VALUES[i] = `img/avatar-${i+1}.svg`;
   }
   const avatarUrlNumber = getRandomNumber(0, AVATAR_URL_VALUES.length-1);
   const avatarUrl = AVATAR_URL_VALUES[avatarUrlNumber];
@@ -121,6 +119,7 @@ function getCompleteMessage() {
   } else {
     completeMessage = firstPartOfMessage;
   }
+  COMMENTS_MESSAGES.push(firstPartOfMessage);
   return completeMessage;
 }
 
@@ -140,7 +139,7 @@ function SingleComment (commentId, avatar, message, commenterName) {
 function addComments () {
   const COMMENTS = [];
   for (let i=0; i<getRandomNumber(1,10); i++) {
-    COMMENTS[i] = new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName());
+    COMMENTS.push(new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName()));
   }
   return COMMENTS;
 }
@@ -155,8 +154,10 @@ function SinglePhoto (photoId, urlAdress, description, likes, comments) {
 
 function creeatePhotos () {
   const photoObjects = [];
+  counter = 0;
   for (let j=0; j<PHOTOS_COUNT; j++) {
-    photoObjects[j] = new SinglePhoto(getPhotoId(), getPhotoUrlAdress(), getDescription(), getLikes(), addComments());
+    counter = j;
+    photoObjects.push(new SinglePhoto(getPhotoId(), getPhotoUrlAdress(), getDescription(), getLikes(), addComments()));
   }
   return photoObjects;
 }
