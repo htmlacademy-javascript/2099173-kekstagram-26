@@ -52,4 +52,4 @@ for (let i=0; i<smallPicturesElements.length; i++) {
   });
 }
 
-
+export {bodyElement};
