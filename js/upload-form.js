@@ -1,11 +1,12 @@
 import {bodyElement} from './browse-photos.js';
 import {isKeydownEscape} from './util.js';
 import {textDescriptionFormElement} from './form-validation.js';
+import {textHashtagsFormElement} from './form-validation.js';
 
 const formDivElement = document.querySelector('.img-upload__overlay');
 const uploadCancelButtonElement = document.querySelector('.img-upload__cancel');
 const imgUploadInputElement = document.querySelector('#upload-file');
-const onUploadFormEscKeydown = (evt) => {
+const onUploadFormEscKeydown = function (evt) {
   if (isKeydownEscape(evt)) {
     closeUploadForm();
   }
@@ -22,15 +23,25 @@ function closeUploadForm () {
   bodyElement.classList.remove('modal-open');
   formDivElement.classList.add('hidden');
   document.removeEventListener('keydown', onUploadFormEscKeydown);
+  imgUploadInputElement.value = '';
+  textDescriptionFormElement.value = '';
 }
 
 imgUploadInputElement.addEventListener('change', openUploadForm);
 
-textDescriptionFormElement.onfocus = () => {
+textDescriptionFormElement.onfocus = function () {
   document.removeEventListener('keydown', onUploadFormEscKeydown);
 };
 
-textDescriptionFormElement.onblur = () => {
+textDescriptionFormElement.onblur = function () {
+  document.addEventListener('keydown', onUploadFormEscKeydown);
+};
+
+textHashtagsFormElement.onfocus = function () {
+  document.removeEventListener('keydown', onUploadFormEscKeydown);
+};
+
+textHashtagsFormElement.onblur = function () {
   document.addEventListener('keydown', onUploadFormEscKeydown);
 };
 
