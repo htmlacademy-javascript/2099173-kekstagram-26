@@ -29,7 +29,11 @@ function isKeydownEscape(evt) {
   return evt.key === 'Escape';
 }
 
+function isTrue(value) {
+  return value === true;
+}
 
 export {getRandomNumber};
 export {checkStringLength};
 export {isKeydownEscape};
+export {isTrue};

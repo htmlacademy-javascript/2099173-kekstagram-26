@@ -3,8 +3,8 @@ import {isKeydownEscape}from './util.js';
 
 const bigPictureSectionElement = document.querySelector('.big-picture');
 const bodyElement = document.querySelector('body');
-const commentCountElement = document.querySelector('.social__comment-count');
-const commentsLoaderElement = document.querySelector('.comments-loader');
+// const commentCountElement = document.querySelector('.social__comment-count');
+// const commentsLoaderElement = document.querySelector('.comments-loader');
 const bigPictureContainerElement = document.querySelector('.big-picture__img');
 const bigPictureElement = bigPictureContainerElement.querySelector('img');
 const socialCaptionElement = document.querySelector('.social__caption');
@@ -23,8 +23,8 @@ const onBigPictureEscKeydown = (evt) => {
 function openPicture () {
   bigPictureSectionElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
-  commentCountElement.classList.add('hidden');
-  commentsLoaderElement.classList.add('hidden');
+  // commentCountElement.classList.add('hidden');
+  // commentsLoaderElement.classList.add('hidden');
   document.addEventListener('keydown', onBigPictureEscKeydown);
   cancelButtonElement.addEventListener('click', closePicture);
 }
@@ -52,4 +52,4 @@ for (let i=0; i<smallPicturesElements.length; i++) {
   });
 }
 
-
+export {bodyElement};
