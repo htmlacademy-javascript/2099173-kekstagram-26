@@ -124,7 +124,7 @@ function getCompleteMessage() {
 }
 
 function getName() {
-  const nameNumber = getRandomNumber(0, SOME_NAMES.length-1);
+  const nameNumber = getRandomNumber(1, SOME_NAMES.length)-1;
   const correctName = SOME_NAMES[nameNumber];
   return correctName;
 }
