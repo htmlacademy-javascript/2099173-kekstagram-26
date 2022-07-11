@@ -1,4 +1,4 @@
-import { creeatePhotos} from './generate-photos.js';
+import {creeatePhotos} from './generate-photos.js';
 
 const picturesTitleElement = document.querySelector('.pictures__title');
 picturesTitleElement.classList.remove('visually-hidden');
@@ -15,8 +15,8 @@ for (let i=0; i<photoObjects.length; i++) {
   const pictureCommentsElement = newPicture.querySelector('.picture__comments');
   const pictureLikesElement = newPicture.querySelector('.picture__likes');
   pictureImgElement.src = photoObjects[i].urlAdress;
-  pictureCommentsElement.textContent = photoObjects[i].likes;
-  pictureLikesElement.textContent = photoObjects[i].comments.length;
+  pictureCommentsElement.textContent = photoObjects[i].comments.length;
+  pictureLikesElement.textContent = photoObjects[i].likes;
   fragment.append(newPicture);
 }
 
