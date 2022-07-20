@@ -138,7 +138,7 @@ function SingleComment (commentId, avatar, message, commenterName) {
 
 function addComments () {
   const COMMENTS = [];
-  for (let i=0; i<getRandomNumber(1,10); i++) {
+  for (let i=0; i<getRandomNumber(1,40); i++) {
     COMMENTS.push(new SingleComment(getCommentID(), getAvatarUrl(), getCompleteMessage(), getName()));
   }
   return COMMENTS;
