@@ -78,3 +78,5 @@ effectLevelSliderElement.noUiSlider.on('update', () => {
   effectValue.value = effectLevelSliderElement.noUiSlider.get();
   writeEffectsInCSS(effectNumber);
 });
+
+export {effectNumber};
