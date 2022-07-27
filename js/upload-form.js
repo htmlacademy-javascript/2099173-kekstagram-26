@@ -45,4 +45,4 @@ textHashtagsFormElement.onblur = function () {
   document.addEventListener('keydown', onUploadFormEscKeydown);
 };
 
-export {closeUploadForm};
+export {openUploadForm, closeUploadForm};

@@ -1,4 +1,3 @@
-import {photoObjects} from './thumbnails.js';
 import {isKeydownEscape}from './util.js';
 
 const bigPictureSectionElement = document.querySelector('.big-picture');
@@ -10,7 +9,6 @@ const socialCaptionElement = document.querySelector('.social__caption');
 const likesCountElement = document.querySelector('.likes-count');
 const socialCommentsCountElement = document.querySelector('.social__comment-count');
 const commentsCountElement = document.querySelector('.comments-count');
-const smallPicturesElements = document.querySelectorAll('.picture');
 const cancelButtonElement = document.querySelector('#picture-cancel');
 const socialCommentsContainerElement = document.querySelector('.social__comments');
 const newCommentItem = document.createElement('li');
@@ -53,6 +51,10 @@ function showComments (photoObject) {
 function openPicture (photoObject) {
   bigPictureSectionElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
+  bigPictureElement.src = photoObject.url;
+  socialCaptionElement.textContent = photoObject.description;
+  likesCountElement.textContent = photoObject.likes;
+  commentsCountElement.textContent = photoObject.comments.length;
   clearComments ();
   showComments (photoObject);
   document.addEventListener('keydown', onBigPictureEscKeydown);
@@ -66,14 +68,4 @@ function closePicture () {
   cancelButtonElement.removeEventListener('click', closePicture);
 }
 
-for (let i=0; i<smallPicturesElements.length; i++) {
-  smallPicturesElements[i].addEventListener('click', () => {
-    openPicture(photoObjects[i]);
-    bigPictureElement.src = photoObjects[i].urlAdress;
-    socialCaptionElement.textContent = photoObjects[i].description;
-    likesCountElement.textContent = photoObjects[i].likes;
-    commentsCountElement.textContent = photoObjects[i].comments.length;
-  });
-}
-
-export {bodyElement};
+export {bodyElement, openPicture};

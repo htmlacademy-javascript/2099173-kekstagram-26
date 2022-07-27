@@ -1,4 +1,5 @@
-// Функция, возвращающая случайное целое число из переданного диапазона включительно.
+const ALERT_SHOW_TIME = 5000;
+
 function getRandomNumber (minValue, maxValue) {
   if (minValue <0 || maxValue < 0) {
     return 0;
@@ -20,7 +21,6 @@ function getRandomNumber (minValue, maxValue) {
   return Math.round(Math.random() * (maxValue - minValue) + minValue);
 }
 
-// Функция для проверки максимальной длины строки.
 function checkStringLength (string, length) {
   return string.length <= length;
 }
@@ -33,7 +33,29 @@ function isTrue(value) {
   return value === true;
 }
 
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = '100';
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.right = '0';
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
+
 export {getRandomNumber};
 export {checkStringLength};
 export {isKeydownEscape};
 export {isTrue};
+export {showAlert};
